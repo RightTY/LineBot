@@ -17,7 +17,7 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-- task: PublishBuildArtifacts@1
+
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
@@ -27,13 +27,4 @@ steps:
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     enableCustomDeployment: true
     DeploymentType: 'webDeploy'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Pay-As-You-Go (f49994cb-5581-4e57-9788-32a2f4a73b80)'
-    appType: 'webApp'
-    appName: 'SevenDeadlySins'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    deploymentMethod: 'auto'
+- task: PublishBuildArtifacts@1
