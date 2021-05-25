@@ -1,0 +1,40 @@
+{
+  "DatabaseSetting": {
+    "MSSQL": {
+      "ConnectionStrings": ""
+    },
+    "MySQL": {
+      "ConnectionStrings": "server=35.222.110.44;port=3306;user id=root;password=Qaz19960921;database=SevenDeadlySins;charset=utf8;"
+    }
+  },
+  "LineSetting": {
+    "ClientId": "1570875920",
+    "ClientSecret": "2aedecef76fea2de4e75161bd7dcc55a",
+    "Authorize": {
+      "Scope": "profile%20openid%20email",
+      "AuthorizeUri": "https://access.line.me/oauth2/v2.1/authorize",
+      "RedirectUri": "https://localhost:44324/Home/LineLogin",
+      "ResponseType": "code",
+      "State": "",
+      "Nonce": "",
+      "Prompt": "consent",
+      "Max_age": 0,
+      "UiLocales": "",
+      "BotPrompt": ""
+    },
+    "Token": {
+      "RedirectUri": "https://localhost:44324/Home/LineLogin",
+      "TokenUri": "https://api.line.me/oauth2/v2.1/token",
+      "GrantType": "authorization_code"
+    },
+    "Profile": {
+      "ProfileUri": "https://api.line.me/v2/profile"
+    }
+  },
+  "ImgurSetting": {
+    "CLIENT_ID": "1d2f853ffff03d3",
+    "CLIENT_SECRET": "4eb5196454ca6b5c33bf9360480728e1fb146f44",
+    "RefreshToken": "d8d258bb47455c5fc4db04dfef461cb8b01a4858",
+    "albumId": "ZrrbmVO"
+  }
+}
