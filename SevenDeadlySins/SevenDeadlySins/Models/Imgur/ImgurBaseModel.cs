@@ -22,6 +22,6 @@ namespace SevenDeadlySins.Models.Imgur
         /// <summary>
         /// 
         /// </summary>
-        public string { get; set; }
+        public string albumId { get; set; }
 }
 }
