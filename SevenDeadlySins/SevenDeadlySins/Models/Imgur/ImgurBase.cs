@@ -16,15 +16,15 @@ namespace SevenDeadlySins.Models.Imgur
         /// <summary>
         /// 
         /// </summary>
-        public ApiClient imgurClient = null;
+        public ApiClient imgurClient { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public ImageEndpoint imageEndpoint = null;
+        public ImageEndpoint imageEndpoint { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public IImage image = null;
+        public IImage image { get; set; }
         #endregion Imgur
 
         private readonly HttpClient HttpClient = new();

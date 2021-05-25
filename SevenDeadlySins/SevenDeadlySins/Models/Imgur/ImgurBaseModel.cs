@@ -10,18 +10,18 @@ namespace SevenDeadlySins.Models.Imgur
         /// <summary>
         /// 
         /// </summary>
-        public string CLIENT_ID = string.Empty;
+        public string CLIENT_ID { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string CLIENT_SECRET = string.Empty;
+        public string CLIENT_SECRET { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string RefreshToken = string.Empty;
+        public string RefreshToken { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string albumId = null;
-    }
+        public string { get; set; }
+}
 }
