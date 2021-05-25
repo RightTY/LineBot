@@ -18,6 +18,14 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
@@ -27,10 +35,3 @@ steps:
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     enableCustomDeployment: true
     DeploymentType: 'webDeploy'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    publishWebProjects: true
