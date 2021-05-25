@@ -33,7 +33,7 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
-    projects: '_RightTY_SevenDeadlySins/SevenDeadlySins/SevenDeadlySins/SevenDeadlySins.csproj'
+    projects: '*/SevenDeadlySins/SevenDeadlySins.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet publish'
