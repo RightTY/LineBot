@@ -1,4 +1,5 @@
 ﻿using isRock.LineBot;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 namespace SevenDeadlySins.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors()]
     [ApiController]
     public class MasterController : ControllerBase
     {
