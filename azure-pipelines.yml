@@ -19,19 +19,24 @@ steps:
   displayName: 'Run a multi-line script'
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)' # Update this to match your need
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
+    projects: '**/*Tests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    publishWebProjects: true
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    targetPath: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'myWebsiteName'
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
