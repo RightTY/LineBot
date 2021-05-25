@@ -50,6 +50,10 @@ namespace SevenDeadlySins
             //services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             #endregion
 
+            #region --HttpClient--
+            services.AddHttpClient();
+            #endregion
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
