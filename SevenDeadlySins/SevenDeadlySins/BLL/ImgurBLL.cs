@@ -19,8 +19,8 @@ namespace SevenDeadlySins.BLL
             SetCLIENT_ID(settings.Value.ImgurSetting.CLIENT_ID);
             SetCLIENT_SECRET(settings.Value.ImgurSetting.CLIENT_SECRET);
             SetImgurClient();
-            SetOAuth2Token(settings.Value.ImgurSetting.RefreshToken);
             SetImageEndpoint();
+            SetOAuth2Token(settings.Value.ImgurSetting.RefreshToken);
             SetAlbumId(settings.Value.ImgurSetting.albumId);
         }
     }
