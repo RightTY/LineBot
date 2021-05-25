@@ -18,12 +18,11 @@ namespace SevenDeadlySins.BLL
         /// <param name="settings"></param>
         public ImgurBLL(IOptions<Setting> settings, IHttpClientFactory clientFactory)
         {
-            _clientFactory = clientFactory;
             SetCLIENT_ID(settings.Value.ImgurSetting.CLIENT_ID);
             SetCLIENT_SECRET(settings.Value.ImgurSetting.CLIENT_SECRET);
             SetImgurClient();
-            SetImageEndpoint();
-            SetOAuth2Token(settings.Value.ImgurSetting.RefreshToken);
+            SetOAuth2Token(settings.Value.ImgurSetting.RefreshToken, clientFactory.CreateClient());
+            SetImageEndpoint(clientFactory.CreateClient());
             SetAlbumId(settings.Value.ImgurSetting.albumId);
         }
     }

@@ -8,6 +8,7 @@ using SevenDeadlySins.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -19,12 +20,14 @@ namespace SevenDeadlySins.Controllers
     public class MasterController : ControllerBase
     {
         private readonly IOptions<Setting> _settings;
+        private IHttpClientFactory _clientFactory;
         /// <summary>
         /// 
         /// </summary>
         /// <param name="settings"></param>
-        public MasterController(IOptions<Setting> settings)
+        public MasterController(IOptions<Setting> settings, IHttpClientFactory clientFactory)
         {
+            _clientFactory = clientFactory;
             _settings = settings;
         }
 
@@ -40,7 +43,7 @@ namespace SevenDeadlySins.Controllers
                 foreach (Event @event in receievedMessage.events)
                 {
                     string type = @event.message.type;
-                    LinebotReply linebotReply = new LinebotReply(_settings);
+                    LinebotReply linebotReply = new LinebotReply(_settings, _clientFactory);
                     switch (type)
                     {
                         case "text":

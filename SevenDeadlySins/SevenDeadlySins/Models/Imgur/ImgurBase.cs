@@ -27,8 +27,6 @@ namespace SevenDeadlySins.Models.Imgur
         public IImage image { get; set; }
         #endregion Imgur
 
-        protected IHttpClientFactory _clientFactory;
-
         /// <summary>
         /// 
         /// </summary>
@@ -51,9 +49,9 @@ namespace SevenDeadlySins.Models.Imgur
         /// 
         /// </summary>
         /// <param name="OAuth2Token"></param>
-        public void SetOAuth2Token(string RefreshToken)
+        public void SetOAuth2Token(string RefreshToken,HttpClient httpClient)
         {
-            HttpClient httpClient = _clientFactory.CreateClient();
+            
             OAuth2Endpoint endpoint = new(imgurClient, httpClient);
             IOAuth2Token OAuth2Token = endpoint.GetTokenAsync(RefreshToken).GetAwaiter().GetResult();
             imgurClient.SetOAuth2Token(OAuth2Token);
@@ -79,9 +77,8 @@ namespace SevenDeadlySins.Models.Imgur
         /// <summary>
         /// 
         /// </summary>
-        public void SetImageEndpoint()
+        public void SetImageEndpoint(HttpClient httpClient)
         {
-            HttpClient httpClient = _clientFactory.CreateClient();
             imageEndpoint = new ImageEndpoint(imgurClient, httpClient);
         }
 

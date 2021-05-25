@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using SevenDeadlySins.Models;
 using Microsoft.Extensions.Options;
+using System.Net.Http;
 
 namespace SevenDeadlySins.BLL
 {
@@ -27,13 +28,15 @@ namespace SevenDeadlySins.BLL
         /// </summary>
         private ImgurBLL imgurBLL;
         private string type = "text";
+        private IHttpClientFactory _clientFactory;
         /// <summary>
         /// 
         /// </summary>
         /// <param name="settings"></param>
-        public LinebotReply(IOptions<Setting> settings)
+        public LinebotReply(IOptions<Setting> settings, IHttpClientFactory clientFactory)
         {
             _settings = settings;
+            _clientFactory = clientFactory;
             SetBot("ZzUoNDYFET8fh5Zo1p3Pnhumom8u5xasHsW4rrK1nnWbpr0HE9Ao1a8ESVMUVjANf4NWf1yIy3HXalPcdIOynOf28xcrPaeSFmlGM9ZdHnkf/8LOEtaTiTNiYTuKZ7OhRCnEODyWF3Kh3sfxBww/jQdB04t89/1O/w1cDnyilFU=//mr3nBzuMfhkB8zXKc6L5zqSact4nvpEACZdC6DjQdB04t89/1O/w1cDnyilFU=");
         }
 
@@ -83,7 +86,7 @@ namespace SevenDeadlySins.BLL
         /// <param name="eventData"></param>
         public void Image(Event eventData)
         {
-            imgurBLL = new ImgurBLL(_settings);
+            imgurBLL = new ImgurBLL(_settings, _clientFactory);
             byte[] imageArray = GetImage(eventData);
             using Stream stream = new MemoryStream(imageArray);
             imgurBLL.image = imgurBLL.UploadImageAsync(stream);
