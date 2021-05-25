@@ -17,8 +17,20 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-- task: DotNetCoreCLI@2
+- task: UseDotNet@2
+  displayName: 'Use .NET Core runtime 5.0.6'
   inputs:
-    command: build
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)' 
+    packageType: runtime
+    version: 5.0.6
+    includePreviewVersions: true
+
+- task: NuGetToolInstaller@1
+  displayName: 'Use NuGet 5.8'
+  inputs:
+    versionSpec: 5.8
+    checkLatest: true
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    projects: '_RightTY_SevenDeadlySins/SevenDeadlySins/SevenDeadlySins/SevenDeadlySins.csproj'
