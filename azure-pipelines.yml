@@ -34,3 +34,13 @@ steps:
   displayName: 'dotnet build'
   inputs:
     projects: '_RightTY_SevenDeadlySins/SevenDeadlySins/SevenDeadlySins/SevenDeadlySins.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: publish
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Azure App Service Deploy: SevenDeadlySins'
+  inputs:
+    azureSubscription: 'Pay-As-You-Go (f49994cb-5581-4e57-9788-32a2f4a73b80)'
+    WebAppName: SevenDeadlySins
