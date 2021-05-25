@@ -80,7 +80,7 @@ namespace SevenDeadlySins.Models.Imgur
         public void SetImageEndpoint()
         {
             using HttpClient httpClient = new();
-            imageEndpoint = new ImageEndpoint(imgurClient, HttpClient);
+            imageEndpoint = new ImageEndpoint(imgurClient, httpClient);
         }
 
         /// <summary>
