@@ -107,13 +107,11 @@ namespace SevenDeadlySins.BLL
         {
             List<JObject> jObjectData = new List<JObject>();
             string[] nums = { "1", "3", "8", "12" };
-            using (WebClient webClient = new WebClient())
+            HttpClient httpClient = _clientFactory.CreateClient();
+            foreach (string num in nums)
             {
-                foreach (string num in nums)
-                {
-                    string jsonStr = webClient.DownloadString(@"http://forum.netmarble.com/api/game/nanagb/official/forum/7ds_tw/article/list?menuSeq=" + num + @"&viewType=lv&start=0&rows=4&sort=NEW");
-                    jObjectData.Add(JObject.Parse(jsonStr));
-                }
+                string jsonStr = httpClient.GetStringAsync(@"http://forum.netmarble.com/api/game/nanagb/official/forum/7ds_tw/article/list?menuSeq=" + num + @"&viewType=lv&start=0&rows=4&sort=NEW").GetAwaiter().GetResult();
+                jObjectData.Add(JObject.Parse(jsonStr));
             }
 
             List<Bubble> bubbles = new List<Bubble>();
